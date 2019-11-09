@@ -237,7 +237,7 @@ export default class Invoice extends React.Component {
           <View style={ styles.tableContent }>
               <View style={styles.first}>
                     <View style={{ height: 20, width: 20, borderRadius: 20/2, backgroundColor: 'red',
-                    justifyContent:'center', alignItems: 'center'}}>
+                    justifyContent:'center', alignItems: 'center', padding: 5}}>
                       <Text style={{ color: '#fff', textAlign: 'center'}}> — </Text>
                     </View>
               </View>
@@ -309,6 +309,7 @@ export default class Invoice extends React.Component {
                       </View>
 
                       <View style={styles.rowOverlay}>
+
                           <View style={styles.rowWidth}>
                               <TouchableOpacity onPress={() => this._minsItem()}>
                                   <Image source={this.state.minsIcon} style={{ height: 50}} resizeMode="contain"/>
@@ -320,7 +321,7 @@ export default class Invoice extends React.Component {
                                 style={{ height: 100, fontSize: 50, width: '90%'}}
                                 autoFocus={true}
                                 textAlign={'center'}
-                                keyboardType={'decimal-pad'}
+                                keyboardType={'numeric'}
                                 onChangeText = {(text) => this.setState({item: text})}
                                 value={this.state.item}  />
                           </View>
@@ -356,6 +357,7 @@ export default class Invoice extends React.Component {
           } else {
             this.setState({isVisible: true, item: item.cost.toString() , type: name, name: item.name, index: index})
           }
+
       }
 
       _onClose = () => {
@@ -474,7 +476,7 @@ export default class Invoice extends React.Component {
 
       _renderFiles = () => {
           if(this.state.files.length > 0){
-            return(  <View>  </View>)
+            return(<View>  </View>)
           }
       }
 

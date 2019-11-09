@@ -8,6 +8,7 @@ const mapStateToProps = state => {
           token: state.sessionData.token,
           loading: state.sessionData.loading,
           error: state.sessionData.error,
+          user: state.sessionData.user
       }
 }
 

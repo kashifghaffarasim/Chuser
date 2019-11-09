@@ -19,7 +19,7 @@ class Decider extends React.Component {
 
     render() {
       return (
-          <AppContext.Provider value={null}>
+          <AppContext.Provider>
               <Main />
           </AppContext.Provider>
         )

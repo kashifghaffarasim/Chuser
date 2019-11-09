@@ -2,6 +2,9 @@ import React from 'react';
 import { View, Image, Text, TextInput, TouchableOpacity, ActivityIndicator , TouchableHighlight, Alert } from 'react-native';
 import { styles } from './styles';
 
+import CookieManager from 'react-native-cookies';
+
+
 export default class Verification extends React.Component {
 
   constructor(props) {
@@ -208,6 +211,10 @@ export default class Verification extends React.Component {
 
   _logout = async() => {
       const { logout } = this.props;
+
+      CookieManager.clearAll().then((res) => {
+        console.log('CookieManager.clearAll =>', res);
+      });
       await logout()
       this.props.navigation.navigate('login')
   }

@@ -17,15 +17,13 @@ export default class Login extends React.Component {
               password: null,
           }
           this.inputs = {}
-          AsyncStorage.removeItem('code');
-
       }
 
 
-      componentDidMount() {
-          const { token , cleanup } = this.props;
+     async componentDidMount() {
+          const { token , cleanup, user } = this.props;
           if(token){
-              AsyncStorage.removeItem('code');
+              await  AsyncStorage.removeItem('code');
               this.props.navigation.navigate('code')
           } else {
              cleanup()

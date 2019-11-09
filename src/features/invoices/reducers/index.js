@@ -26,6 +26,8 @@ export const SAVE_IMAGE = 'chuser/SAVE_IMAGE';
 export const SAVE_IMAGE_SUCCESS = 'chuser/SAVE_IMAGE_SUCCESS';
 export const SAVE_IMAGE_FAIL = 'chuser/SAVE_IMAGE_FAIL';
 
+export const CLEAR_DATA = 'chuser/CLEAR_DATA';
+
 
 let initialState = {
     loading: false,
@@ -48,13 +50,15 @@ export default sessionsReducer = (state = {}, action) => {
         case DOCUMENTLIST:
             return { ...state, error: null ,loading: true , list: []};
         case DOCUMENTLIST_SUCCESS:
+            console.log('success')
             if(action.payload && action.payload.data){
-              console.log('success')
+              console.log(action.payload.data)
               return { ...state, loading: false, list: action.payload.data};
             } else {
               return { ...state, loading: false , list: []};
             }
         case DOCUMENTLIST_FAIL:
+            console.log('error')
             return { ...state, loading: false  };
         case GET_INSTITUION:
             return { ...state, swLoading: false , saveLoading: false };
@@ -104,6 +108,8 @@ export default sessionsReducer = (state = {}, action) => {
               }
         case CREATE_INVOICE_FAIL:
               return { ...state, saveLoading: false  };
+        case CLEAR_DATA:
+              return { ...state, supplier: [], warehouse: []}
         default:
             return state;
     }
@@ -112,15 +118,15 @@ export default sessionsReducer = (state = {}, action) => {
 
 
 export function getList(token, value, sortOrder){
-    var url = '/customer/document/active/list?from=0&count=50&sortingField='+ value +'&sortOrder=' + sortOrder;
-
+    var url = '/customer/document/active/list?from=0&count=12&sortingField='+ value +'&sortOrder=' + sortOrder;
     return {
         type: DOCUMENTLIST,
         payload: {
             request: {
-                      method: 'get',
+                      method: 'GET',
+                      baseURL: 'https://platform.chuser.ru/api/rest/mobile',
                       url: url,
-                      headers: { 'JWT': token }
+                      headers: {'JWT': token }
                  }
            }
      }
@@ -204,3 +210,17 @@ export function saveInvoice(token, data){
 }
 
 // End: Save Invoices
+
+
+
+// Clear Data
+
+export function clearData(){
+
+    return {
+        type: CLEAR_DATA,
+    }
+}
+
+
+// Clear Data

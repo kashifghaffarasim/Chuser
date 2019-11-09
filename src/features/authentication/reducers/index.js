@@ -44,16 +44,11 @@ export default sessionsReducer = (state = {}, action) => {
         case USERINFO:
             return { ...state, loading: true };
         case USERINFO_SUCCESS:
-
-
-            console.log(action.payload.data)
-            console.log('sssssssssssssssssssss')
             if(action.payload && action.payload.data){
               return { ...state, loading: false , user: action.payload.data};
             } else {
               return { ...state, loading: false, user: null };
             }
-
         case USERINFO_FAIL:
             return { ...state, loading: false };
         case VERIFY_CODE:
@@ -117,9 +112,6 @@ export function  logout() {
 
 
 export function getUser(token){
-  console.log('sssssssssssssssssss')
-  console.log(token)
-  console.log('sssss')
     return {
         type: USERINFO,
         payload: {

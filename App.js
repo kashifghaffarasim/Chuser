@@ -7,14 +7,14 @@ import { store, persistor } from './src/store';
 
 import Decider from './src/decider';
 
-
 const App: () => React$Node = () => {
 
   return (
-        <Provider store={store}>
-          <PersistGate  persistor={persistor}>
+        <Provider store={store} >
+          <PersistGate loading={null} persistor={persistor}>
               <Decider />
           </PersistGate>
+
        </Provider>
   );
 };

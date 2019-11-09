@@ -22,7 +22,8 @@ const mapDispatchToProps = dispatch => {
         acceptInvoice,
         cancelInvoice,
         saveData,
-        uploadImage
+        uploadImage,
+        clearData
     }, dispatch)
 };
 

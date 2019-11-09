@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Component from '../components/create';
-import { getResturant, getSupplier, getWareHouse , saveInvoice, uploadImage} from '../reducers';
+import { getResturant, getSupplier, getWareHouse , saveInvoice, uploadImage, clearData} from '../reducers';
 import { getItem } from '../../invoice_items/reducers';
 
 const mapStateToProps = state => {
@@ -25,7 +25,8 @@ const mapDispatchToProps = dispatch => {
       getWareHouse,
       saveInvoice,
       uploadImage,
-      getItem
+      getItem,
+      clearData
     }, dispatch)
 };
 

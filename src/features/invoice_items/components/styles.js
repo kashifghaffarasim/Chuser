@@ -113,7 +113,8 @@ export const styles = StyleSheet.create({
     },
     rest: {
         width: '14%',
-        padding: 10,
+        paddingTop: 5,
+        paddingBottom: 5,
         justifyContent: 'center',
         alignItems: 'center',
         borderRightColor: '#ddd',
@@ -121,7 +122,8 @@ export const styles = StyleSheet.create({
     },
     rest1:{
       width: '20%',
-      padding: 10,
+      paddingBottom: 10,
+      paddingTop:10,
       borderRightColor: '#ddd',
       justifyContent: 'center',
       alignItems: 'center',

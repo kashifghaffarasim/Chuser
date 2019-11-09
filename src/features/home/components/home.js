@@ -1,6 +1,8 @@
 import React from 'react';
 import { View, Image, Text, TextInput, TouchableOpacity, ActivityIndicator, ImageBackground, ScrollView, BackHandler } from 'react-native';
 import Overlay from 'react-native-modal-overlay';
+import CookieManager from 'react-native-cookies';
+
 
 export default class Home extends React.Component {
 
@@ -136,7 +138,10 @@ export default class Home extends React.Component {
 
     _logout = async() => {
         const { logout } = this.props;
-        logout()
+        CookieManager.clearAll().then((res) => {
+          console.log('CookieManager.clearAll =>', res);
+        });
+        await logout()
         this.setState({ modalVisible: false})
         this.props.navigation.navigate('login')
     }

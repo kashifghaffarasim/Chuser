@@ -535,7 +535,8 @@ export default class CreatSupplier extends React.Component {
      }
 
      _getSupplierList = async(option) => {
-             const { token , institution , getSupplier, getWareHouse} = this.props;
+             const { token , institution , getSupplier, getWareHouse, clearData} = this.props;
+             await clearData()
              const currentIns = institution[option.item]
              this.setState({inName: option.name, buyer: currentIns.guid})
              if(currentIns){
@@ -546,7 +547,7 @@ export default class CreatSupplier extends React.Component {
              const { supplier , warehouse} = this.props;
              await  this._supplierData(supplier)
              await  this._warehouseData(warehouse)
-             
+
              const { loading } = this.props;
              if(loading){
                 this._isActive()
@@ -572,17 +573,21 @@ export default class CreatSupplier extends React.Component {
 
         _resturantSearch = (text) => {
             const { institution } = this.props;
-            if(text.length > 1) {
+
+            if(text.length >= 1) {
                   var array = []
                   for(var i=0; i < institution.length; i++){
                       if(institution[i]){
                         var name = institution[i].name
+                        console.log(name)
+                        console.log(text)
                         if(name.includes(text)){
                             var a = {item: i, name: institution[i].name}
                             array.push(a)
                          }
                       }
                   }
+
                   this.setState({spArray: array })
             } else {
               this._institueData()
@@ -591,12 +596,14 @@ export default class CreatSupplier extends React.Component {
 
         _supplierSearch = (text) => {
             const { supplier } = this.props;
-            if(text.length > 1){
+            if(text.length >= 1){
                 var array = []
                 if(supplier){
                     for(var i=0; i < supplier.length; i++){
                         if(supplier[i]){
                           var name = supplier[i].name
+                          console.log(name)
+                          console.log(text)
                           if(name.includes(text)){
                               var a = {item: i, name: supplier[i].name}
                               array.push(a)
@@ -612,7 +619,7 @@ export default class CreatSupplier extends React.Component {
 
         _wareHouseSearch = (text) => {
             const { warehouse } = this.props;
-            if(text.length > 1){
+            if(text.length >= 1){
               var array = []
               if(warehouse){
                   for(var i=0; i < warehouse.length; i++){

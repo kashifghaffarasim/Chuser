@@ -2,6 +2,8 @@ import React from 'react';
 import { View, Image, Text, TextInput, TouchableOpacity, ActivityIndicator, ImageBackground, ScrollView, FlatList } from 'react-native';
 import { styles } from './styles'
 import Overlay from 'react-native-modal-overlay';
+import CookieManager from 'react-native-cookies';
+
 
 export default class Invoice extends React.Component {
 
@@ -28,16 +30,12 @@ export default class Invoice extends React.Component {
 
 
     componentDidMount() {
-      console.log('here we are now 1')
         this.props.navigation.addListener('willFocus', async(payload) => {
             const { getList , token} = this.props;
-            console.log('here we are now 2')
             if(token){
-              console.log('here we are now 3')
-              await getList(token, 'date', 'DESCENDING')
+              await getList(token, 'date', 'ASCENDING')
             }
         })
-        console.log('here we are now 4')
     }
 
     render() {
